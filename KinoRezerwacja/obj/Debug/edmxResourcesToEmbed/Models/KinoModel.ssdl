@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kinoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="film">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="rok" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="rezyser" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="opis" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="dlugosc" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="klient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="haslo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="miejsce">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rzad" Type="int" Nullable="false" />
+    <Property Name="nr" Type="int" Nullable="false" />
+    <Property Name="seans" Type="int" Nullable="false" />
+    <Property Name="rezerwacja" Type="int" />
+  </EntityType>
+  <EntityType Name="rezerwacja">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="klient" Type="int" Nullable="false" />
+    <Property Name="kupione" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="seans">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="datetime" Nullable="false" />
+    <Property Name="cena" Type="money" Nullable="false" />
+    <Property Name="film" Type="int" Nullable="false" />
+    <Property Name="d3" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__miejsce__rezerwa__1DE57479">
+    <End Role="rezerwacja" Type="Self.rezerwacja" Multiplicity="0..1" />
+    <End Role="miejsce" Type="Self.miejsce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rezerwacja">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="miejsce">
+        <PropertyRef Name="rezerwacja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__miejsce__seans__1CF15040">
+    <End Role="seans" Type="Self.seans" Multiplicity="1" />
+    <End Role="miejsce" Type="Self.miejsce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seans">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="miejsce">
+        <PropertyRef Name="seans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rezerwacj__klien__1920BF5C">
+    <End Role="klient" Type="Self.klient" Multiplicity="1" />
+    <End Role="rezerwacja" Type="Self.rezerwacja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="klient">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rezerwacja">
+        <PropertyRef Name="klient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__seans__film__15502E78">
+    <End Role="film" Type="Self.film" Multiplicity="1" />
+    <End Role="seans" Type="Self.seans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="film">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="seans">
+        <PropertyRef Name="film" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kinoModelStoreContainer">
+    <EntitySet Name="film" EntityType="Self.film" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="klient" EntityType="Self.klient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="miejsce" EntityType="Self.miejsce" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rezerwacja" EntityType="Self.rezerwacja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seans" EntityType="Self.seans" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__miejsce__rezerwa__1DE57479" Association="Self.FK__miejsce__rezerwa__1DE57479">
+      <End Role="rezerwacja" EntitySet="rezerwacja" />
+      <End Role="miejsce" EntitySet="miejsce" />
+    </AssociationSet>
+    <AssociationSet Name="FK__miejsce__seans__1CF15040" Association="Self.FK__miejsce__seans__1CF15040">
+      <End Role="seans" EntitySet="seans" />
+      <End Role="miejsce" EntitySet="miejsce" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rezerwacj__klien__1920BF5C" Association="Self.FK__rezerwacj__klien__1920BF5C">
+      <End Role="klient" EntitySet="klient" />
+      <End Role="rezerwacja" EntitySet="rezerwacja" />
+    </AssociationSet>
+    <AssociationSet Name="FK__seans__film__15502E78" Association="Self.FK__seans__film__15502E78">
+      <End Role="film" EntitySet="film" />
+      <End Role="seans" EntitySet="seans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kinoModelStoreContainer" CdmEntityContainer="kinoEntities">
+    <EntitySetMapping Name="film">
+      <EntityTypeMapping TypeName="kinoModel.film">
+        <MappingFragment StoreEntitySet="film">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="rok" ColumnName="rok" />
+          <ScalarProperty Name="rezyser" ColumnName="rezyser" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="dlugosc" ColumnName="dlugosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="klient">
+      <EntityTypeMapping TypeName="kinoModel.klient">
+        <MappingFragment StoreEntitySet="klient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="haslo" ColumnName="haslo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="miejsce">
+      <EntityTypeMapping TypeName="kinoModel.miejsce">
+        <MappingFragment StoreEntitySet="miejsce">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rzad" ColumnName="rzad" />
+          <ScalarProperty Name="nr" ColumnName="nr" />
+          <ScalarProperty Name="seans" ColumnName="seans" />
+          <ScalarProperty Name="rezerwacja" ColumnName="rezerwacja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rezerwacja">
+      <EntityTypeMapping TypeName="kinoModel.rezerwacja">
+        <MappingFragment StoreEntitySet="rezerwacja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="klient" ColumnName="klient" />
+          <ScalarProperty Name="kupione" ColumnName="kupione" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seans">
+      <EntityTypeMapping TypeName="kinoModel.seans">
+        <MappingFragment StoreEntitySet="seans">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+          <ScalarProperty Name="film" ColumnName="film" />
+          <ScalarProperty Name="d3" ColumnName="d3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

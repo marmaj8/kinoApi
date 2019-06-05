@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e23795981d904718a85203cf7b628eef" Name="Diagram1">
+        <EntityTypeShape EntityType="kinoModel.film" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinoModel.klient" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinoModel.miejsce" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinoModel.rezerwacja" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinoModel.seans" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="kinoModel.FK__seans__film__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="kinoModel.FK__rezerwacj__klien__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="kinoModel.FK__miejsce__rezerwa__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="kinoModel.FK__miejsce__seans__1CF15040" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
